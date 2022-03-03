@@ -6,10 +6,15 @@ This bot will check subito.it for new listings and send updates via Telegram
 
 ## Deployment
 
-To deploy this project we need to install the following pip packages:
+We are going to use Docker to deploy the bot
 
 ```bash
-  pip install beautifulsoup4 requests pyTelegramBotAPI
+  docker run \
+    -d \
+    --name subito.it-bot \
+    -e CHATID=<AUTHORIZED_USER_CHAT_ID_HERE> \
+    -e APIKEY=<TELEGRAM_BOT_API_KEY_HERE> \
+    --restart unless-stopped \
+    almanni/subitotgbot
 ```
 
-Then we need to set the Bot Token and your authorized user's chat id in constants.py
